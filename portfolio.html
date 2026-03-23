@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAP ABAP Developer | 홍영채 Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --sap-blue: #0070f3;
+            --sap-dark: #004085;
+            --sap-gold: #f0ab00;
+            --bg-gray: #f1f5f9;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --blue-hover-shadow: 0 10px 25px rgba(0, 112, 243, 0.25);
+        }
+
+        * { box-sizing: border-box; font-family: 'Pretendard', sans-serif; }
+        body { margin: 0; background-color: var(--bg-gray); color: #1e293b; line-height: 1.6; }
+
+        /* 1. Hero Section */
+        .hero {
+            height: 45vh;
+            background: linear-gradient(135deg, var(--sap-dark) 0%, var(--sap-blue) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+        .hero h1 { font-size: 3rem; margin: 0; letter-spacing: -1px; }
+        .hero p { font-size: 1.2rem; font-weight: 300; max-width: 850px; margin: 20px 0; line-height: 1.6; opacity: 0.95; }
+
+        .container { max-width: 1100px; margin: -60px auto 60px; padding: 0 20px; }
+
+        /* Common Box Style */
+        .content-box {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid transparent;
+        }
+        .content-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--blue-hover-shadow);
+            border-color: rgba(0, 112, 243, 0.3);
+        }
+
+        .profile-wrapper { display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
+        .profile-img { 
+            width: 200px; 
+            height: 260px; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            border: 4px solid #fff; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            flex-shrink: 0; margin-top: 38px;
+        }
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .profile-info { flex: 1; min-width: 300px; }
+        .profile-info h2 { font-size: 2.2rem; margin: 0; color: var(--sap-dark); }
+        .contact-list { list-style: none; padding: 0; margin: 15px 0; color: #64748b; }
+        .contact-list li { margin-bottom: 5px; font-size: 1rem; display: flex; align-items: center; cursor: default; }
+        .contact-list i { width: 25px; color: var(--sap-blue); }
+        .badge { background: var(--sap-blue); color: white; padding: 5px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-right: 8px; }
+
+        .strength-stack { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+        .strength-row { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 20px; border-radius: 10px; border-left: 4px solid var(--sap-blue); font-size: 0.95rem; }
+        .strength-row b { color: var(--sap-blue); margin-right: 10px; }
+
+        /* 3. Sub Info Grid */
+        .sub-info-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; }
+        .info-title { font-size: 1.25rem; color: var(--sap-dark); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-weight: 700; }
+        
+        .data-table { width: 100%; border-collapse: collapse; }
+        .data-table td { padding: 8px 0; vertical-align: top; font-size: 0.95rem; }
+        .data-table .date-col { width: 140px; color: #94a3b8; text-align: right; white-space: nowrap; font-weight: 500; }
+        .data-table .content-col { padding-right: 15px; }
+
+        /* Skill Tags */
+        .skill-group { margin-bottom: 25px; }
+        .tag-container { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag { 
+            background: #fff; padding: 8px 16px; border-radius: 10px; font-size: 0.9rem; 
+            display: flex; align-items: center; gap: 12px; border: 1px solid #e2e8f0; font-weight: 600; 
+        }
+        .tag img { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; }
+        
+        /* 4. Experience & Projects - 이미지 가독성 개선 */
+        .project-card { border: 1px solid #f1f5f9; border-radius: 15px; margin-bottom: 20px; overflow: hidden; transition: 0.3s; }
+        .project-card:hover { border-color: var(--sap-blue); }
+        .project-head { padding: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff; }
+        .project-head h3 { margin: 0; font-size: 1.25rem; color: var(--sap-dark); }
+        .pj-keywords span { font-size: 0.8rem; color: var(--sap-blue); font-weight: 600; background: #eff6ff; padding: 3px 10px; border-radius: 5px; margin-right: 5px; }
+
+        .project-body { display: none; padding: 0 30px 35px 30px; background: #fff; border-top: 1px solid #f1f5f9; }
+        .project-card.active .project-body { display: block; }
+        
+        .star-item { margin-top: 18px; padding-left: 15px; border-left: 3px solid #e2e8f0; }
+        .star-item b { color: var(--sap-blue); margin-right: 10px; font-size: 0.95rem; }
+        .highlight { color: var(--sap-blue); font-weight: 800; text-decoration: underline; text-underline-offset: 4px; }
+        
+        .img-block { 
+            background: #f8fafc; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 12px; 
+            min-height: 300px; /* 최소 높이 확보 */
+            height: auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 20px 0; 
+            overflow: hidden;
+            padding: 10px;
+        }
+        .img-block img { 
+            width: 100%; 
+            height: auto; /* 비율 유지하며 꽉 채움 */
+            max-height: 600px; /* 너무 길어지지 않게 제한 */
+            object-fit: contain; 
+            display: block;
+        }
+
+        /* 5. Closing Section */
+        .closing-section { text-align: center; }
+        .closing-content p { font-size: 1.1rem; color: #475569; margin-bottom: 30px; line-height: 1.8; }
+        .contact-card-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .contact-item-static { display: flex; align-items: center; gap: 12px; padding: 12px 25px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; color: var(--sap-dark); font-weight: 600; cursor: default; }
+        .contact-item-static i { color: var(--sap-blue); }
+
+        footer { text-align: center; padding: 60px 20px; color: #94a3b8; font-size: 0.9rem; }
+
+        @media (max-width: 850px) {
+            .sub-info-grid { grid-template-columns: 1fr; }
+            .profile-wrapper { flex-direction: column; text-align: center; align-items: center; }
+            .data-table .date-col { width: 100px; text-align: left; display: block; margin-top: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>홍영채 포트폴리오</h1>
+    <p>제약이 많은 ERP 환경에서도 시스템 구조와 업무 프로세스를 함께 고려해 <br>현실적인 해결 방안을 도출하는 SAP ABAP 개발자입니다.</p>
+</div>
+
+<div class="container">
+    
+    <section class="content-box">
+        <div class="profile-wrapper">
+            <div class="profile-img">
+                <img src="홍영채_증명사진.jpg" alt="홍영채 증명사진">
+            </div>
+            <div class="profile-info">
+                <div>
+                    <span class="badge">SAP SYNC 5기</span>
+                    <span class="badge" style="background:var(--sap-gold)">ABAP Developer</span>
+                </div>
+                <h2>홍영채</h2>
+                <ul class="contact-list">
+                    <li><i class="fa-solid fa-envelope"></i> yc3312@naver.com</li>
+                    <li><i class="fa-solid fa-phone"></i> 010-3312-4180</li>
+                </ul>
+                <div class="strength-stack">
+                    <div class="strength-row"><b>VNTG</b> SAP 시스템 고도화 및 MM 운영 전문 <span style="float:right; font-size: 0.85rem; color: #94a3b8;">2025.03 - 2026.04</span></div>
+                    <div class="strength-row"><b>구조적 문제 해결</b> 현상이 아닌 데이터 흐름 기반의 원인 분석</div>
+                    <div class="strength-row"><b>운영 최적화</b> 대규모 시스템 간 인터페이스 안정성 강화</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="sub-info-grid">
+        <section class="content-box">
+            <div class="info-title"><i class="fa-solid fa-user-graduate"></i> Education & Awards</div>
+            <table class="data-table">
+                <tr>
+                    <td class="content-col"><b>전북대학교</b> (농생물학 학사 / IAB 융합전공 복수전공)</td>
+                    <td class="date-col">2020.03 - 2024.02</td>
+                </tr>
+                <tr>
+                    <td class="content-col"><b>SAP SYNC 5기</b> (<span class="highlight">전체 PT 우수상</span> 수여)</td>
+                    <td class="date-col">2024.07 - 2024.12</td>
+                </tr>
+            </table>
+
+            <div class="info-title" style="margin-top:40px;"><i class="fa-solid fa-award"></i> Certificates</div>
+            <table class="data-table">
+                <tr><td class="content-col">정보처리기사</td><td class="date-col">2024.06</td></tr>
+                <tr><td class="content-col">SQLD (SQL 개발자)</td><td class="date-col">2023.12</td></tr>
+                <tr><td class="content-col">TOEIC Speaking (IH)</td><td class="date-col">2024.05</td></tr>
+            </table>
+        </section>
+
+        <section class="content-box">
+            <div class="skill-group">
+                <div class="info-title"><i class="fa-solid fa-laptop-code"></i> Technical Skills</div>
+                <div class="tag-container">
+                    <div class="tag"><img src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg" alt="SAP"> ABAP</div>
+                    <div class="tag"><img src="ui5.png" alt="UI5"> UI5</div>
+                    <div class="tag"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python"> Python</div>
+                    <div class="tag"><img src="javascript.png" alt="JS"> JavaScript</div>
+                </div>
+            </div>
+            
+            <div class="skill-group" style="margin-top:40px;">
+                <div class="info-title"><i class="fa-solid fa-brain"></i> AI Engineering</div>
+                <div class="tag-container">
+                    <div class="tag"><img src="claude.png" alt="Claude"> Claude</div>
+                    <div class="tag"><img src="gemini.png" alt="Gemini"> Gemini</div>
+                    <div class="tag"><img src="copilot.png" alt="Copilot"> Copilot</div>
+                    <div class="tag"><img src="https://img.icons8.com/ios-filled/50/000000/chatgpt.png" alt="GPT"> ChatGPT</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="content-box">
+        <div class="info-title"><i class="fa-solid fa-list-check"></i> Experience & Projects</div>
+
+        <div class="project-card">
+            <div class="project-head" onclick="togglePJ(this)">
+                <div>
+                    <h3>VNTG: MM 운영 및 인터페이스 구조 개선</h3>
+                    <div class="pj-keywords">
+                        <span>S/4HANA</span> <span>RFC</span> <span>Async Processing</span> <span>Data Consistency</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="project-body">
+                <div class="star-item"><b>Situation</b> MES-SAP 인터페이스의 동기 처리 구조로 인한 월 평균 50건의 데이터 정합성 오류 발생</div>
+                <div class="star-item"><b>Task</b> 타임아웃 지연 해소 및 시스템 간 데이터 불일치 현상 근본적 차단</div>
+                <div class="star-item"><b>Action</b> 실적 생성과 리턴 전송 로직을 분리하여 비동기 처리 구조로 전면 재설계</div>
+                <div class="img-block"><img src="인터페이스 개선 프로세스.png" alt="인터페이스 프로세스 개선도"></div>
+                <div class="star-item"><b>Result</b> 구조 개선 후 데이터 누락 및 정합성 오류 <span class="highlight">0건</span> 달성</div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-head" onclick="togglePJ(this)">
+                <div>
+                    <h3>VNTG: 전사 SAP SSO 구축 프로젝트</h3>
+                    <div class="pj-keywords">
+                        <span>SSO</span> <span>RFC</span> <span>HR Master Data</span> <span>Authentication Logic</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="project-body">
+                <div class="star-item"><b>Situation</b> 3,000명 규모 전사 사용자의 SAP 접속 편의성 및 보안 인증 일원화 필요</div>
+                <div class="star-item"><b>Task</b> 그룹웨어-SAP 자동 로그인 연동 인터페이스 및 관리용 CBO 리포트 개발</div>
+                <div class="star-item"><b>Action</b> 인사 정보 연동 사용자 유효성 검증 RFC 개발 및 대상자 통합 관리 프로그램 구현</div>
+                <div class="img-block"><img src="sso 프로세스.png" alt="SSO 아키텍처"></div>
+                <div class="star-item"><b>Result</b> 전 직원 로그인 단계 간소화로 사용자 만족도 제고 및 보안 관리 효율성 확보</div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-head" onclick="togglePJ(this)">
+                <div>
+                    <h3>SYNC 5기: 과채주스 구매 프로세스 구축</h3>
+                    <div class="pj-keywords">
+                        <span>Business Process Design</span> <span>ALV Report</span> <span>BDC</span> <span>End-to-End Flow</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="project-body">
+                <div class="star-item"><b>Situation</b> 기업 규모 확장에 따른 체계적인 구매 및 재고 관리 시스템 환경 구축</div>
+                <div class="star-item"><b>Task</b> 구매요청부터 구매오더, 입고까지 이어지는 전체 CBO 프로세스 설계 및 개발</div>
+                <div class="star-item"><b>Action</b> ALV 기반 자재 배송 일정 모니터링 캘린더 개발 및 데이터 조회용 BDC 구현</div>
+                <div class="img-block"><img src="sync 프로세스.png" alt="전체 프로세스 맵"></div>
+                <div class="star-item"><b>Result</b> 요구사항 분석 및 시연 역량을 인정받아 <span class="highlight">전체 PT 우수상</span> 수상</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-box closing-section">
+        <div class="info-title"><i class="fa-solid fa-paper-plane"></i> Contact & Closing</div>
+        <div class="closing-content">
+            <p>
+                단순히 코드를 짜는 개발자를 넘어, <b>비즈니스 가치를 이해하고 시스템의 안정성을 책임지는 파트너</b>가 되고 싶습니다.<br>
+                실무 경험과 끊임없는 학습을 바탕으로, 현대오토에버의 SAP 환경에 최적화된 솔루션을 제공하겠습니다.
+            </p>
+            <div class="contact-card-grid">
+                <div class="contact-item-static">
+                    <i class="fa-solid fa-envelope"></i> <span>yc3312@naver.com</span>
+                </div>
+                <div class="contact-item-static">
+                    <i class="fa-solid fa-phone"></i> <span>010-3312-4180</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Hong Young-chae. SAP ABAP Developer Portfolio.</p>
+    </footer>
+</div>
+
+<script>
+    function togglePJ(header) {
+        const card = header.parentElement;
+        const icon = header.querySelector('i');
+        card.classList.toggle('active');
+        if (card.classList.contains('active')) {
+            icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+        } else {
+            icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+        }
+    }
+</script>
+
+</body>
+</html>
