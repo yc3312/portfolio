@@ -93,7 +93,7 @@
         }
         .tag img { width: 22px; height: 22px; object-fit: contain; flex-shrink: 0; }
         
-        /* 4. Experience & Projects - 이미지 가독성 개선 */
+        /* 4. Experience & Projects */
         .project-card { border: 1px solid #f1f5f9; border-radius: 15px; margin-bottom: 20px; overflow: hidden; transition: 0.3s; }
         .project-card:hover { border-color: var(--sap-blue); }
         .project-head { padding: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #fff; }
@@ -111,7 +111,7 @@
             background: #f8fafc; 
             border: 1px solid #e2e8f0; 
             border-radius: 12px; 
-            min-height: 300px; /* 최소 높이 확보 */
+            min-height: 300px;
             height: auto; 
             display: flex; 
             align-items: center; 
@@ -128,7 +128,7 @@
             display: block;
         }
 
-/* [추가] 지침 보기 전용 스타일 */
+        /* [추가] 지침 보기 전용 스타일 */
         .toggle-instruction-btn {
             background-color: #f8fafc; border: 1px solid #e2e8f0; color: #475569; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s; margin-bottom: 10px;
         }
@@ -140,7 +140,7 @@
         .markdown-body h2 { font-size: 1.1rem; color: var(--sap-blue); margin-top: 20px; }
         .markdown-body h3 { font-size: 1rem; color: #1e293b; margin-top: 15px; }
         .markdown-body p, .markdown-body ul, .markdown-body ol { font-size: 0.9rem; color: #475569; line-height: 1.6; }
-        
+
         /* 5. Closing Section */
         .closing-section { text-align: center; }
         .closing-content p { font-size: 1.1rem; color: #475569; margin-bottom: 30px; line-height: 1.8; }
@@ -229,7 +229,7 @@
                 <div class="info-title"><i class="fa-solid fa-laptop-code"></i> Technical Skills</div>
                 <div class="tag-container">
                     <div class="tag"><img src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg" alt="SAP"> ABAP</div>
-                    <div class="tag"><img src="ui5.png" alt="UI5"> UI5</div>
+                    <div class="tag"><img src="ui5.png" alt="UI5"> UI5 / Fiori</div>
                     <div class="tag"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python"> Python</div>
                     <div class="tag"><img src="javascript.png" alt="JS"> JavaScript</div>
                 </div>
@@ -239,8 +239,8 @@
                 <div class="info-title"><i class="fa-solid fa-brain"></i> AI Engineering</div>
                 <div class="tag-container">
                     <div class="tag"><img src="claude.png" alt="Claude"> Claude</div>
-                    <div class="tag"><img src="gemini.png" alt="Gemini"> Gemini</div>
                     <div class="tag"><img src="copilot.png" alt="Copilot"> Copilot</div>
+                    <div class="tag"><img src="gemini.png" alt="Gemini"> Gemini</div>
                     <div class="tag"><img src="https://img.icons8.com/ios-filled/50/000000/chatgpt.png" alt="GPT"> ChatGPT</div>
                 </div>
             </div>
@@ -287,7 +287,8 @@
                 <div class="star-item"><b>Result</b> 전 직원 로그인 단계 간소화로 사용자 만족도 제고 및 보안 관리 효율성 확보</div>
             </div>
         </div>
-<div class="project-card">
+
+        <div class="project-card">
             <div class="project-head" onclick="togglePJ(this)">
                 <div>
                     <h3>VNTG: AI 도입을 통한 개발 생산성 향상 PoC</h3>
@@ -414,7 +415,7 @@
                 <div class="star-item"><b>Result</b> AI 활용 표준 프로세스 정립 및 개발 구현 속도 <span class="highlight">1.5배 향상</span></div>
             </div>
         </div>
-        
+
         <div class="project-card">
             <div class="project-head" onclick="togglePJ(this)">
                 <div>
@@ -435,7 +436,6 @@
                 <div class="star-item"><b>Result</b> 요구사항 분석 및 시연 역량을 인정받아 <span class="highlight">전체 PT 우수상</span> 수상</div>
             </div>
         </div>
-
     </section>
 
     <section class="content-box closing-section">
@@ -462,14 +462,26 @@
 </div>
 
 <script>
+    // 프로젝트 전체 토글 함수
     function togglePJ(header) {
         const card = header.parentElement;
-        const icon = header.querySelector('i');
+        const icon = header.querySelector('i.fa-solid');
         card.classList.toggle('active');
         if (card.classList.contains('active')) {
             icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
         } else {
             icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+        }
+    }
+
+    // AI 가이드 지침 보기 개별 토글 함수
+    function toggleInstruction(btn) {
+        const body = btn.nextElementSibling;
+        btn.classList.toggle('active');
+        if (body.style.display === "block") {
+            body.style.display = "none";
+        } else {
+            body.style.display = "block";
         }
     }
 </script>
