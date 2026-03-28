@@ -128,6 +128,19 @@
             display: block;
         }
 
+/* [추가] 지침 보기 전용 스타일 */
+        .toggle-instruction-btn {
+            background-color: #f8fafc; border: 1px solid #e2e8f0; color: #475569; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s; margin-bottom: 10px;
+        }
+        .toggle-instruction-btn:hover { background-color: #f1f5f9; color: #1e293b; }
+        .toggle-instruction-btn i.arrow-icon { transition: transform 0.3s; }
+        .toggle-instruction-btn.active i.arrow-icon { transform: rotate(90deg); }
+        .instruction-body { display: none; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; text-align: left; }
+        .markdown-body h1 { font-size: 1.3rem; color: var(--sap-dark); border-bottom: 2px solid #e2e8f0; padding-bottom: 8px; margin-bottom: 15px; }
+        .markdown-body h2 { font-size: 1.1rem; color: var(--sap-blue); margin-top: 20px; }
+        .markdown-body h3 { font-size: 1rem; color: #1e293b; margin-top: 15px; }
+        .markdown-body p, .markdown-body ul, .markdown-body ol { font-size: 0.9rem; color: #475569; line-height: 1.6; }
+        
         /* 5. Closing Section */
         .closing-section { text-align: center; }
         .closing-content p { font-size: 1.1rem; color: #475569; margin-bottom: 30px; line-height: 1.8; }
@@ -179,7 +192,7 @@
 
     <div class="sub-info-grid">
         <section class="content-box">
-            <div class="info-title"><i class="fa-solid fa-user-graduate"></i> Education & Awards</div>
+            <div class="info-title"><i class="fa-solid fa-user-clock"></i> Work & Training History</div>
             <table class="data-table">
                 <tr>
                     <td class="content-col">
